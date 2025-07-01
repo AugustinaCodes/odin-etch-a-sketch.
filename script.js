@@ -11,14 +11,14 @@ function generateGrid(userChoice) {
     }
     container.appendChild(column);
   }
+  const cells = document.querySelectorAll(".square");
+  cells.forEach((cell) => {
+    cell.addEventListener("mouseover", () => {
+      cell.classList.add("hovered");
+    });
+  });
 }
 
-const cells = document.querySelectorAll(".square");
-cells.forEach((cell) => {
-  cell.addEventListener("mouseover", () => {
-    cell.classList.add("hovered");
-  });
-});
 
 const button = document.querySelector("button");
 button.addEventListener("click", () => {
@@ -27,13 +27,16 @@ button.addEventListener("click", () => {
   );
   const number = Number(answer);
 
+  if (document.querySelector("#notif")) {
+    document.querySelector("#notif").remove();
+  }
+
   if (number > 100) {
     const notification = document.createElement("div");
     notification.textContent = "Please enter a number smaller than a 100";
     notification.id = "notif";
     document.body.appendChild(notification);
   } else {
-    document.querySelector("#notif").remove();
     generateGrid(number);
   }
 });
