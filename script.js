@@ -1,5 +1,9 @@
 const container = document.querySelector("#container");
 
+if (container.children.length === 0) {
+    generateGrid(16)
+}
+
 function generateGrid(userChoice) {
   for (let i = 0; i < userChoice; i++) {
     const column = document.createElement("div");
