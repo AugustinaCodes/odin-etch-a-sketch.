@@ -1,10 +1,14 @@
 const container = document.querySelector("#container");
 
 if (container.children.length === 0) {
-    generateGrid(16)
+  generateGrid(16);
 }
 
 function generateGrid(userChoice) {
+  if (container.children.length > 0) {
+    container.innerHTML = "";
+  }
+
   for (let i = 0; i < userChoice; i++) {
     const column = document.createElement("div");
     column.classList.add("column");
@@ -22,7 +26,6 @@ function generateGrid(userChoice) {
     });
   });
 }
-
 
 const button = document.querySelector("button");
 button.addEventListener("click", () => {
